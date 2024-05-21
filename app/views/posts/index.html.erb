@@ -6,7 +6,7 @@
           <%# TODO: display the name of the user who created the post %>
           <%# 1. find user who created post %>
           <% if post.user_id != nil%>
-          <%= post.user_id%>
+          <%= post.user.first_name if post.user%>
           <%# 2. handle any potential bad data where the post is missing a user %>
           <% else %>
           anonymous 
