@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     # TODO: authenticate user
     @user = User.find_by({"email" => params["email"]})
     if @user != nil
-      if @user["password"] == params["password"]
+      if BCrypt::Password.new(@user["password"]) == params["password"]
         flash["notice"] = "Welcome"
         redirect_to "/posts"
        else
